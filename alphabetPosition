@@ -1,0 +1,14 @@
+//This function will take a text input and output each letter's corresponding number in the alphabet (ignoring non-letters)
+//Ex: "The sunset sets at twelve o' clock." would output "20 8 5 19 21 14 19 5 20 19 5 20 19 1 20 20 23 5 12 22 5 15 3 12 15 3 11"
+
+function alphabetPosition(text) {
+  let result = "";
+  for (let i = 0; i < text.length; i++) {
+    let char = text[i].toUpperCase();
+    if (char >= 'A' && char <= 'Z') {
+      let position = char.charCodeAt(0) - 'A'.charCodeAt(0) + 1;
+      result += position + " ";
+    }
+  }
+  return result.trim();
+}
