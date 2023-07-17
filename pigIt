@@ -1,0 +1,15 @@
+//Returns a string in pig latin
+
+function pigIt(str){
+  return str
+    .split(" ")
+    .map(word => {
+    if (/^[A-Za-z]+$/.test(word)) {const firstChar = word.charAt(0);
+    const remainingChars = word.slice(1);
+    return remainingChars + firstChar + "ay";}
+    else {
+      return word
+    }
+  })
+    .join(" ");
+}
