@@ -1,0 +1,13 @@
+//A function that takes any url and returns the domain name
+//Ex: "https://github.com/calebSymmonds" would return "github.com"
+
+function domainName(url){
+  if (url.indexOf('://') !== -1) {
+    url = url.split('://')[1];
+  }
+  if (url.indexOf('www.') === 0) {
+    url = url.slice(4);
+  }
+  url = url.split('/')[0];
+  return url.split('.')[0];
+}
