@@ -1,0 +1,20 @@
+//This function checks to see if anyone has won at a game of tic-tac-toe
+//The function returns 1 if X won, 2 if O won, and 0 if cat's game/draw
+//It will return -1 if the game is still being played and no one has won yet.
+
+function gameWon(board) {
+  const checkWin = (symbol) => {
+    return board.some(row => row.every(cell => cell === symbol)) ||
+           board.some((_, col) => board.every(row => row[col] === symbol)) ||
+           (board[0][0] === symbol && board[1][1] === symbol && board[2][2] === symbol) ||
+           (board[0][2] === symbol && board[1][1] === symbol && board[2][0] === symbol);
+  };
+  if (checkWin(1)) return 1; 
+  if (checkWin(2)) return 2; 
+  for (let row = 0; row < 3; row++) {
+    for (let col = 0; col < 3; col++) {
+      if (board[row][col] === 0) return -1;
+    }
+  }
+  return 0;
+}
