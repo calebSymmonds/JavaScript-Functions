@@ -1,0 +1,18 @@
+//This code takes a number n and finds all k-digit numbers that add up to n in ascending order
+//The function outputs the number of solutiuons it finds, the lowest number in the set, and the highest number in the set
+//If there are no values which satisfy these constaints, the function will return an empty array
+
+function howManyNumbers(n, k) {
+    let solution = [0, "", ""];
+
+    for (let i = Math.pow(10, k - 1); i < Math.pow(10, k); i++) {
+        const digits = Array.from(String(i), Number);
+        const sum = digits.reduce((acc, digit) => acc + digit, 0);
+
+        if (sum === n && digits.every((digit, index) => !index || digit >= digits[index - 1])) {
+            solution = [solution[0] + 1, (solution[1] === "" ? String(i) : solution[1]), String(i)];
+        }
+    }
+
+    return solution[0] ? solution : [];
+}
